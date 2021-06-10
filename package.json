@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node --experimental-json-modules index.mjs"
+  },
   "devDependencies": {
     "prettier": "^2.3.1"
   }

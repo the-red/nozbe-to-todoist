@@ -10,8 +10,6 @@ fs.writeFileSync(`dist/project.csv`, project);
 fs.writeFileSync(`dist/task.csv`, task);
 
 json.project.forEach((project) => {
-  project.id, project.name;
-
   const taskObj = json.task
     .filter((_) => _.project_id === project.id)
     .flatMap((_) => {

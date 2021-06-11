@@ -36,8 +36,7 @@ json.project.forEach((project) => {
       return [task, ...subtasks];
     });
 
-  fs.writeFileSync(
-    `dist/todoist-${project.name}.csv`,
-    stringify(todoistTemplate, opts)
-  );
+  const todoistFileName = `dist/todoist-${project.name}.csv`;
+  fs.writeFileSync(todoistFileName, stringify(todoistTemplate, opts));
+  console.log(todoistFileName);
 });

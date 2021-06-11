@@ -1,9 +1,20 @@
 {
   "name": "nozbe-to-todoist",
-  "version": "0.1.0",
-  "bin": "index.js",
+  "version": "0.1.1",
+  "bin": {
+    "nozbe-to-todoist": "index.js"
+  },
   "license": "MIT",
   "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-red/nozbe-to-todoist.git"
+  },
+  "author": "Hisaki Akaza",
+  "bugs": {
+    "url": "https://github.com/the-red/nozbe-to-todoist/issues"
+  },
+  "homepage": "https://github.com/the-red/nozbe-to-todoist#readme",
   "devDependencies": {
     "prettier": "^2.3.1"
   },

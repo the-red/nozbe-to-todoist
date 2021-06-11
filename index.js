@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 const stringify = require('csv-stringify/lib/sync.js');
-const json = require('./data.json');
 const fs = require('fs');
+const path = require('path');
+const json = require(path.resolve(process.argv[2]));
 
 fs.mkdirSync('dist', { recursive: true });
 const opts = { header: true, bom: true };

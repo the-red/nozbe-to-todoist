@@ -1,11 +1,9 @@
 {
   "name": "nozbe-to-todoist",
   "version": "1.0.0",
-  "main": "index.js",
+  "bin": "index.js",
   "license": "MIT",
-  "scripts": {
-    "start": "node --experimental-json-modules index.mjs"
-  },
+  "scripts": {},
   "devDependencies": {
     "prettier": "^2.3.1"
   },

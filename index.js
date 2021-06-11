@@ -1,6 +1,8 @@
-import stringify from 'csv-stringify/lib/sync.js';
-import json from './data.json';
-import fs from 'fs';
+#!/usr/bin/env node
+
+const stringify = require('csv-stringify/lib/sync.js');
+const json = require('./data.json');
+const fs = require('fs');
 
 fs.mkdirSync('dist', { recursive: true });
 const opts = { header: true, bom: true };

@@ -28,14 +28,8 @@ json.project.forEach((project) => {
       const subtasks = _.comments.map((_) => ({
         TYPE: 'task',
         CONTENT: _.body,
-        DESCRIPTION: '',
-        PRIORITY: _.next || '4',
+        PRIORITY: '4',
         INDENT: '2',
-        AUTHOR: '',
-        RESPONSIBLE: '',
-        DATE: _.datetime,
-        DATE_LANG: '',
-        TIMEZONE: '',
       }));
       return [task, ...subtasks];
     });

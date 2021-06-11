@@ -14,11 +14,11 @@ json.project.forEach((project) => {
 
   const taskObj = json.task
     .filter((_) => _.project_id === project.id)
-    .map((_) => {
-      return {
+    .flatMap((_) => {
+      const task = {
         TYPE: 'task',
         CONTENT: _.name,
-        DESCRIPTION: _.comments.map((_) => _.body).join('\n'),
+        DESCRIPTION: '',
         PRIORITY: _.next || '4',
         INDENT: '1',
         AUTHOR: '',
@@ -27,6 +27,19 @@ json.project.forEach((project) => {
         DATE_LANG: '',
         TIMEZONE: '',
       };
+      const subtasks = _.comments.map((_) => ({
+        TYPE: 'task',
+        CONTENT: _.body,
+        DESCRIPTION: '',
+        PRIORITY: _.next || '4',
+        INDENT: '2',
+        AUTHOR: '',
+        RESPONSIBLE: '',
+        DATE: _.datetime,
+        DATE_LANG: '',
+        TIMEZONE: '',
+      }));
+      return [task, ...subtasks];
     });
   const todoist = stringify(taskObj, { header: true, bom: true });
   fs.writeFileSync(`dist/todoist-${project.name}.csv`, todoist);

@@ -3,14 +3,13 @@ import json from './data.json';
 import fs from 'fs';
 
 fs.mkdirSync('dist', { recursive: true });
+const opts = { header: true, bom: true };
 
-const project = stringify(json.project, { header: true, bom: true });
-const task = stringify(json.task, { header: true, bom: true });
-fs.writeFileSync(`dist/project.csv`, project);
-fs.writeFileSync(`dist/task.csv`, task);
+fs.writeFileSync(`dist/project.csv`, stringify(json.project, opts));
+fs.writeFileSync(`dist/task.csv`, stringify(json.task, opts));
 
 json.project.forEach((project) => {
-  const taskObj = json.task
+  const todoistTemplate = json.task
     .filter((_) => _.project_id === project.id)
     .flatMap((_) => {
       const task = {
@@ -33,6 +32,9 @@ json.project.forEach((project) => {
       }));
       return [task, ...subtasks];
     });
-  const todoist = stringify(taskObj, { header: true, bom: true });
-  fs.writeFileSync(`dist/todoist-${project.name}.csv`, todoist);
+
+  fs.writeFileSync(
+    `dist/todoist-${project.name}.csv`,
+    stringify(todoistTemplate, opts)
+  );
 });
